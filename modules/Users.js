@@ -29,7 +29,7 @@ module.exports.Users = class User {
                         }];
                     }
 
-                return response;
+                return response[0];
             };
         }
 }
