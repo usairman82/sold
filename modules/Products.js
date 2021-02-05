@@ -21,11 +21,11 @@ module.exports.Products = class Products {
         //build some helpers.
         this.FetchAll = async (req)=>{
             var response = {"statusCode":HttpStatus.BAD_REQUEST, "error":"Parameter Validation Failed.","details":[]};
+            console.log(req.params, typeof req.params);
             req = this.utils.ValidateParams(req);
             if (req.validated)
             {
                 //Refactor to dedup code
-                console.log(req);
                 delete response.error;
                 response.statusCode = HttpStatus.OK;
                 response.data       = {};
