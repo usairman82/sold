@@ -15,7 +15,7 @@ module.exports.Users = class Users {
                     return this.hash.digest("hex");
             };
 
-            this.AuthenticatUser = async (credentials)=>{
+            this.AuthenticateUser = async (credentials)=>{
                 var response = await this.db.Query('call authenticatUser',[credentials["userEmail"], await this.HashPassword(credentials["password"])]);
                 if (response.errno || !response) {
                     console.error("MySQL Error", response);
