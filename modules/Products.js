@@ -29,7 +29,7 @@ module.exports.Products = class Products {
                 delete response.error;
                 response.statusCode = HttpStatus.OK;
                 response.data       = {};
-                var response = await this.db.Query('call fetchPagedProducts',[req.query["page"]*req.query["limit"], req.query["limit"],req.user.data.["userId"]]);
+                var response = await this.db.Query('call fetchPagedProducts',[req.query["page"]*req.query["limit"], req.query["limit"],req.user.data["userId"]]);
                 if (response.errno || !response) {
                     console.error("MySQL Error", response);
                     return [{
