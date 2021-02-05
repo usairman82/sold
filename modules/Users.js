@@ -32,5 +32,4 @@ module.exports.Users = class Users {
 
                 return response;
             };
-        }
 }
