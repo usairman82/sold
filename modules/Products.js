@@ -5,18 +5,22 @@ module.exports.Products = class Products {
     }
 
     async Create(req){
-
+        return "Products.Create";
     }
 
     async Update(req){
+        return "Products.Update";
+    }
 
+    async FetchAll(req){
+        return "Products.Fetch";
     }
 
     async Fetch(req){
-
+        return "Products.Fetch";
     }
 
     async Search(req){
-
+        return "Products.Search";
     }
 };
