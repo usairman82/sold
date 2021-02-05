@@ -23,6 +23,7 @@
   "homepage": "https://github.com/usairman82/sold#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
     "mysql": "^2.18.1",
     "serverless-http": "^2.7.0"
   }
