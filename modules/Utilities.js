@@ -7,6 +7,7 @@ module.exports.Utilities = class Utilities
 
                                     async  FetchConfig()
                                     {
+                                        var CONFIG    = {};
                                         var fail      = false;
                                         var failCount = 0;
 
@@ -45,5 +46,7 @@ module.exports.Utilities = class Utilities
                                         {
                                             console.error("ERROR:: Unexpected Issues Loading Config File. Troubleshooting Required.");
                                         }
+
+                                        return CONFIG;
                                     }
 };

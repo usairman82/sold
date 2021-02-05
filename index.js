@@ -78,7 +78,7 @@ const handler = sls(app);
 const utils   = new Utilities();
 
 module.exports.handler = async(event)=>{
-    await utils.FetchConfig();
+    CONFIG = await utils.FetchConfig();
     const result = await handler(event);
 
     return result;
