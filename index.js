@@ -166,8 +166,8 @@ module.exports.handler = async(event)=>{
     CONFIG      = await utils.FetchConfig();
     utils       = new Utilities(CONFIG);
     users       = new Users(CONFIG);
-    products    = new Products();
-    inventory   = new Inventory();
+    products    = new Products(CONFIG);
+    inventory   = new Inventory(CONFIG);
     app         = await InitializeRoutes(app);
 
     //https://expressjs.com/en/starter/faq.html

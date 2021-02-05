@@ -6,8 +6,10 @@ const Utilities   = require("./Utilities.js").Utilities;
 //Simple Class Wrapping Product Functionality
 module.exports.Products = class Products {
     constructor(config={}) {
+        console.log("==><==");
+        console.log(config, config.mariadb);
         this.db     = new MariaDB(config);
-        this.utils  = new Utilities(config);    
+        this.utils  = new Utilities(config);
         this.config = config;
 
         this.Create = async (req)=> {

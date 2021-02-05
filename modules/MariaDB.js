@@ -12,7 +12,7 @@ module.exports.MariaDB = class MariaDB extends DatabaseEngineInterface
     constructor(config = {}) {
         super(config);
         this._config      = config;
-        console.log("--->");
+        console.log("--->", new Error().stack);
         console.log(config.mariadb, this._config);
         this.pool         = mariadb.createPool(config.mariadb);
         this.promiseQuery = promisify(this.pool.query).bind(this.pool);
