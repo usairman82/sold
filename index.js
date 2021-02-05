@@ -12,56 +12,17 @@ with an application built in PHP behind  Apache or Nginx.  However, I felt this
 would be more expedient.  Further, NodeJS, while not my favorite language, is well
 know by many junior developers and would make maintaining it easier.
 *******************************************************************************/
-const AWS     = require("aws-sdk");
-const express = require("express");
-var   jwt     = require('express-jwt');
-const mariabd = require("./modules/MariaDB.js");
-const sls     = require("serverless-http");
-const app     = express();
+const AWS         = require("aws-sdk");
+const express     = require("express");
+var   jwt         = require('express-jwt');
+const mariabd     = require("./modules/MariaDB.js");
+const sls         = require("serverless-http");
+const app         = express();
+const Utilities   = require("./modules/Utilities.js").Utilities;
 
 //Config
 var  CONFIG   = {};
-async function FetchConfig()
-{
-    var fail      = false;
-    var failCount = 0;
 
-    do
-    {
-        await new AWS.S3({region: process.env.REGION}).getObject(
-                                  { "Bucket": process.env.CONFIG_BUCKET, "Key": process.env.CONFIG_KEY }
-                              ).promise().then((data)=>{
-                                                          let tmpConfig = data.Body.toString();
-
-                                                          try
-                                                          {
-                                                              CONFIG    = JSON.parse(tmpConfig);
-                                                              fail      = false;
-                                                              failCount = 0;
-                                                          }
-                                                          catch (e)
-                                                          {
-                                                                console.error("ERROR:: Exception while Fetching Config.  Probably malformed JSON.");
-                                                                console.error(e);
-                                                                console.errir(tmpConfig);
-                                                                fail = true;
-                                                                failCount++;
-                                                          }
-                                                      }
-                                               )
-                                        .catch((e)=>{
-                                                        console.error("ERROR:: Exception while Fetching Config.  Probably malformed JSON.");
-                                                        console.error(JSON.stringify(e));
-                                                    }
-                                              );
-
-    }while(fail && failCount< CONFIG.maxRetries);
-
-    if (failCount >CONFIG.maxRetries && fail)
-    {
-        console.error("ERROR:: Unexpected Issues Loading Config File. Troubleshooting Required.");
-    }
-}
 
 //Products
 app.get("/api/products", (req, res) => {
@@ -112,9 +73,12 @@ app.get("/api/inventory/:id/adjust", (req, res) => {
 /*app.get("/api/:userName", (req, res) => {
     res.send(`Welcome, ${req.params.userName}`);
 })*/
+const handler = sls(app);
+const utils   = new Utilities();
 
-module.exports.handler = sls(async ()=>{
-    await FetchConfig();
-    console.log(CONFIG);    
-    return app;
-});
+module.exports.handler = async(event)=>{
+    await utils.FetchConfig();
+    const result = await handler(event);
+
+    return result;
+};
