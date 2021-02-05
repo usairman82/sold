@@ -27,9 +27,9 @@ module.exports.Users = class Users {
                                 "shopName":"",
                                 "userAuthenticated":"0"
                         }];
-                    };
-                }
+                    }
 
                 return response;
             };
+        }
 }
