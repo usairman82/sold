@@ -2,7 +2,7 @@
     "mariadb": {
         "host": "sold.cmq19ymchv3e.us-east-2.rds.amazonaws.com",
         "port": "3306",
-        "username": "admin",
+        "user": "admin",
         "password": "Passw0rd2021!!",
         "database": "sold",
         "comment": "Yes, this should be in secret manager"
