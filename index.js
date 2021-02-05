@@ -141,7 +141,7 @@ async function InitializeRoutes(app) {
                     const authResponse = await users.AuthenticateUser({"userEmail":components[0],"password":components[1]});
                     if (authResponse[0]["userAuthenticated"] == "1")
                     {
-                        res.send({"access_token":await utils.GenerateJWT(req)});
+                        res.send({"access_token":await utils.GenerateJWT(authResponse[0])});
                     }
                     else
                     {

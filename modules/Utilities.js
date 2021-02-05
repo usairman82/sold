@@ -8,7 +8,7 @@ module.exports.Utilities = class Utilities
 
                                         this.GenerateJWT = async (req)=>{
                                                                             console.log(req);
-                                                                            return await JWT.sign({"userId":"123", "expires":"2021-02-04 8:45PM"},this.config.JWT.sillyWeakKey);
+                                                                            return await JWT.sign({"data":req},this.config.JWT.sillyWeakKey,{ expiresIn: '1h' });
                                                                         };
                                         this.FetchConfig= async ()=>{
                                             var fail      = false;
