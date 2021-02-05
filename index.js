@@ -63,9 +63,6 @@ async function FetchConfig()
     }
 }
 
-FetchConfig();
-console.log(CONFIG);
-
 //Products
 app.get("/api/products", (req, res) => {
     res.send("/api/products");
@@ -116,4 +113,8 @@ app.get("/api/inventory/:id/adjust", (req, res) => {
     res.send(`Welcome, ${req.params.userName}`);
 })*/
 
-module.exports.handler = sls(app);
+module.exports.handler = sls(async ()=>{
+    await FetchConfig();
+    console.log(CONFIG);    
+    return app;
+});
