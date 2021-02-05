@@ -79,8 +79,27 @@ async function InitializeRoutes(app) {
     });
 };
 
+const jsonErrorHandler = async (err, req, res, next) => {
+  res.status(500).send({ error: err });
+}
+
 module.exports.handler = async(event)=>{
     CONFIG = await utils.FetchConfig();
+
+    //https://expressjs.com/en/starter/faq.html
+    app.use(function (err, req, res, next) {
+      console.error(err.stack)
+      res.status(500).send(JSON.stringify({"error":err}));
+    });
+
+    app.use(function (req, res, next) {
+      res.status(501).send(JSON.stringify({"error":"Not Implemented");
+    });
+
+    app.use(function (req, res, next) {
+      res.status(404).send(JSON.stringify({"error":"Not Found");
+    });
+
     await InitializeRoutes(app);
 
     const handler = sls(app);
