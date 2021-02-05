@@ -93,11 +93,11 @@ module.exports.handler = async(event)=>{
     });
 
     app.use(function (req, res, next) {
-      res.status(501).send(JSON.stringify({"error":"Not Implemented");
+      res.status(501).send(JSON.stringify({"error":"Not Implemented"}));
     });
 
     app.use(function (req, res, next) {
-      res.status(404).send(JSON.stringify({"error":"Not Found");
+      res.status(404).send(JSON.stringify({"error":"Not Found"}));
     });
 
     await InitializeRoutes(app);
