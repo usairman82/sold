@@ -131,8 +131,9 @@ async function InitializeRoutes(app) {
 
         if (typeof req.headers.authorization !== "undefined")
         {
-            var components = req.headers.authorization.split("Basic");
+            var components = req.headers.authorization.split(" ");
 
+            console.log(components, req.headers.authorization);
             if (components.length ==2 && components[0].toLowerCase() == "basic")
             {
                 components = Buffer.from(components, "base64").toString("ascii").split(":");
