@@ -16,6 +16,7 @@ const express     = require("express");
 var   jwt         = require('express-jwt');
 const mariabd     = require("./modules/MariaDB.js");
 const sls         = require("serverless-http");
+const crypto      = require('crypto');
 var   app         = express();
 const Utilities   = require("./modules/Utilities.js").Utilities;
 const Products    = require("./modules/Products.js").Products;
