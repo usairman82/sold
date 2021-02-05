@@ -184,15 +184,15 @@ module.exports.handler = async(event)=>{
     //https://expressjs.com/en/starter/faq.html
     app.use(function (err, req, res, next) {
       console.error(err.stack)
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(JSON.stringify({"error--":err}));
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(JSON.stringify({"error":err}));
     });
 
     app.use(function (req, res, next) {
-      res.status(HttpStatus.NOT_IMPLEMENTED).send(JSON.stringify({"error--":"Not Implemented"}));
+      res.status(HttpStatus.NOT_IMPLEMENTED).send(JSON.stringify({"error":"Not Implemented"}));
     });
 
     app.use(function (req, res, next) {
-      res.status(HttpStatus.NOT_FOUND).send(JSON.stringify({"error--":"Not Found"}));
+      res.status(HttpStatus.NOT_FOUND).send(JSON.stringify({"error":"Not Found"}));
     });
 
 
