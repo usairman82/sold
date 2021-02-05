@@ -131,17 +131,27 @@ async function InitializeRoutes(app) {
 
         if (typeof req.headers.authorization !== "undefined")
         {
-            var components = Buffer.from(req.headers.authorization, "base64").toString("ascii").split(":");
-            if (components.length == 2)
+            var components = req.headers.authorization.split("Basic");
+
+            if (components.length ==2 && components[0].toLowerCase() == "basic")
             {
-                const authResponse = await this.users.AuthenticatUser({"userEmail":components[0],"password":components[1]});
-                if (authResponse[0]["userAuthenticated"] == "1")
+                components = Buffer.from(components, "base64").toString("ascii").split(":");
+                console.log(components, req.headers);
+                if (components.length == 2)
                 {
-                    res.send({"access_token":await utils.GenerateJWT(req)});
+                    const authResponse = await this.users.AuthenticatUser({"userEmail":components[0],"password":components[1]});
+                    if (authResponse[0]["userAuthenticated"] == "1")
+                    {
+                        res.send({"access_token":await utils.GenerateJWT(req)});
+                    }
+                    else
+                    {
+                        res.status(HttpStatus.UNAUTHORIZED).send({ error: "Unauthorized." });
+                    }
                 }
                 else
                 {
-                    res.status(HttpStatus.UNAUTHORIZED).send({ error: "Unauthorized." });
+                    res.status(HttpStatus.UNAUTHORIZED).send({ error: "Malformed authorization header." });
                 }
             }
             else
