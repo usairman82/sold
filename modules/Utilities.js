@@ -7,6 +7,7 @@ module.exports.Utilities = class Utilities
                                         this.config = config;
 
                                         this.GenerateJWT = async (req)=>{
+                                                                            console.log(req);
                                                                             return await JWT.sign({"userId":"123", "expires":"2021-02-04 8:45PM"},this.config.JWT.sillyWeakKey);
                                                                         };
                                         this.FetchConfig= async ()=>{

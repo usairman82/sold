@@ -14,15 +14,17 @@ know by many junior developers and would make maintaining it easier.
 *******************************************************************************/
 const express     = require("express");
 var   jwt         = require('express-jwt');
-const mariabd     = require("./modules/MariaDB.js");
+const mariadb     = require("./modules/MariaDB.js");
 const sls         = require("serverless-http");
 const crypto      = require('crypto');
 var   app         = express();
 const Utilities   = require("./modules/Utilities.js").Utilities;
 const Products    = require("./modules/Products.js").Products;
 const Inventory   = require("./modules/Inventory.js").Inventory;
+const Users       = require("./modules/Users.js").Users;
 var   products    = new Products();
 var   inventory   = new Inventory();
+var   users       = {};
 //Config Global
 var  CONFIG   = {};
 
@@ -125,6 +127,7 @@ async function InitializeRoutes(app) {
     });
 
     app.get("/api/auth", async(req, res)=>{
+        console.log(req);
         res.send(await utils.GenerateJWT(req));
     });
 
@@ -138,6 +141,7 @@ const jsonErrorHandler = async (err, req, res, next) => {
 module.exports.handler = async(event)=>{
     CONFIG = await utils.FetchConfig();
     utils  = new Utilities(CONFIG);
+    users  = new Users(CONFIG);
     app    = await InitializeRoutes(app);
 
     //https://expressjs.com/en/starter/faq.html
