@@ -1,4 +1,4 @@
-const mariadb     = require("./modules/MariaDB.js");
+const mariadb     = require("./MariaDB.js");
 const sls         = require("serverless-http");
 const crypto      = require('crypto');
 
