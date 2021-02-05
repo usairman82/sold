@@ -37,6 +37,7 @@ module.exports.MariaDB = class MariaDB extends DatabaseEngineInterface
         }
 
         //This library behaves much like Prepared Statements in PHP
+        console.log(query, data);
         response = await this.promiseQuery(query, params).then((data) => {
             console.log('data');
             console.log(data);
