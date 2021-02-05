@@ -7,8 +7,8 @@ const Utilities   = require("./Utilities.js").Utilities;
 module.exports.Products = class Products {
     constructor(config={}) {
         this.db     = new MariaDB(config);
+        this.utils  = new Utilities(config);    
         this.config = config;
-        this.utils  = new Utilities(config);
 
         this.Create = async (req)=> {
             return "Products.Create";
