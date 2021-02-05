@@ -1,4 +1,4 @@
-const mariadb     = require("./MariaDB.js");
+const MariaDB     = require("./MariaDB.js").MariaDB;
 const sls         = require("serverless-http");
 const crypto      = require('crypto');
 const HttpStatus  = require("http-status-codes");
@@ -7,7 +7,7 @@ module.exports.Users = class User {
 
         constructor(config={})
         {
-            this.db   = new mariadb(config);
+            this.db   = new MariaDB(config);
             this.hash = crypto.createHash('sha512');
 
             this.HashPassword = async (password)=>{
