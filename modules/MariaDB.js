@@ -50,9 +50,9 @@ module.exports.MariaDB = class MariaDB extends DatabaseEngineInterface
             return err;
         });
 
-        console.log(JSON.stringify(response));
-        response = await this.promiseQuery(query, params);
-        console.log(JSON.stringify(response));
+        //onsole.log(JSON.stringify(response));
+        //response = await this.promiseQuery(query, params);
+        //console.log(JSON.stringify(response));
 
         console.log('1');
         console.log(response);
