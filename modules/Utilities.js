@@ -1,13 +1,19 @@
 const AWS         = require("aws-sdk");
+const JWT         = require("jsonwebtoken");
 module.exports.Utilities = class Utilities
                            {
                                     constructor(config={})
                                     {
+                                        this.config = {};
+                                    }
+
+                                    async  GenerateJWT(req)
+                                    {
+                                        return JWT.sign({"userId":"123", "expires":"2021-02-04 8:45PM"},this.config.JWT.sillyWeakKey);
                                     }
 
                                     async  FetchConfig()
                                     {
-                                        var config    = {};
                                         var fail      = false;
                                         var failCount = 0;
 
@@ -20,7 +26,7 @@ module.exports.Utilities = class Utilities
 
                                                                                               try
                                                                                               {
-                                                                                                  config    = JSON.parse(tmpConfig);
+                                                                                                  this.config    = JSON.parse(tmpConfig);
                                                                                                   fail      = false;
                                                                                                   failCount = 0;
                                                                                               }
@@ -40,13 +46,13 @@ module.exports.Utilities = class Utilities
                                                                                         }
                                                                                   );
 
-                                        }while(fail && failCount< config.maxRetries);
+                                        }while(fail && failCount< this.config.maxRetries);
 
-                                        if (failCount >config.maxRetries && fail)
+                                        if (failCount >this.config.maxRetries && fail)
                                         {
                                             console.error("ERROR:: Unexpected Issues Loading Config File. Troubleshooting Required.");
                                         }
 
-                                        return config;
+                                        return this.config;
                                     }
 };

@@ -25,57 +25,66 @@ var   inventory   = new Inventory();
 //Config Global
 var  CONFIG   = {};
 
-//Define Products Routes
-app.get("/api/products", async (req, res) => {
-    res.send(await products.FetchAll(req));
-});
-
-app.get("/api/product/:id", async (req, res) => {
-    res.send(await products.Fetch(req));
-});
-
-app.post("/api/product", async (req, res) => {
-    res.send(await products.Create(req));
-});
-
-app.put("/api/product/:id", async (req, res) => {
-    res.send(await products.Update(req));
-});
-
-app.get("/api/product/search", async (req, res) => {
-    res.send(await products.Search(req));
-});
-
-//Inventory
-app.get("/api/inventory", async (req, res) => {
-    res.send(await inventory.FetchAll(req));
-});
-
-app.get("/api/inventory/:id", async (req, res) => {
-    res.send(await inventory.Fetch(req));
-});
-
-app.post("/api/inventory", async (req, res) => {
-    res.send(await inventory.Create(req));
-});
-
-app.put("/api/inventory/:id", async (req, res) => {
-    res.send(await inventory.Update(req));
-});
-
-app.get("/api/inventory/:id/adjust", async (req, res) => {
-    res.send(await nventory.Adjust(req));
-});
-
 /*app.get("/api/:userName", (req, res) => {
     res.send(`Welcome, ${req.params.userName}`);
 })*/
-const handler = sls(app);
 const utils   = new Utilities();
+
+async function InitializeRoutes(app) {
+
+    //Define Products Routes
+    app.get("/api/products", async (req, res) => {
+        res.send(await products.FetchAll(req));
+    });
+
+    app.get("/api/product/:id", async (req, res) => {
+        res.send(await products.Fetch(req));
+    });
+
+    app.post("/api/product", async (req, res) => {
+        res.send(await products.Create(req));
+    });
+
+    app.put("/api/product/:id", async (req, res) => {
+        res.send(await products.Update(req));
+    });
+
+    app.get("/api/product/search", async (req, res) => {
+        res.send(await products.Search(req));
+    });
+
+    //Inventory
+    app.get("/api/inventory", async (req, res) => {
+        res.send(await inventory.FetchAll(req));
+    });
+
+    app.get("/api/inventory/:id", async (req, res) => {
+        res.send(await inventory.Fetch(req));
+    });
+
+    app.post("/api/inventory", async (req, res) => {
+        res.send(await inventory.Create(req));
+    });
+
+    app.put("/api/inventory/:id", async (req, res) => {
+        res.send(await inventory.Update(req));
+    });
+
+    app.get("/api/inventory/:id/adjust", async (req, res) => {
+        res.send(await inventory.Adjust(req));
+    });
+
+    app.get("/api/auth", async(req, res)=>{
+        res.send(await utils.GenerateJWT(req));
+    });
+};
 
 module.exports.handler = async(event)=>{
     CONFIG = await utils.FetchConfig();
-    const result = await handler(event);
+    await InitializeRoutes(app);
+
+    const handler = sls(app);
+    const result  = await handler(event);
 
     return result;
 };
