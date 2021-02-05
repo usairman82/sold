@@ -1,0 +1,12 @@
+{
+    "database":{
+        "host":"",
+        "port":"",
+        "username":"",
+        "password":"",
+        "comment":"Yes, this should be in secret manager"
+    },
+    "defaults":{
+        "pageSize":25
+    }
+}
