@@ -11,8 +11,8 @@ module.exports.MariaDB = class MariaDB extends DatabaseEngineInterface
 {
     constructor(config = {}) {
         super(config);
-        console.log(config);
         this._config      = config;
+        console.log(config.mariadb);
         this.pool         = mariadb.createPool(config.mariadb);
         this.promiseQuery = promisify(this.pool.query).bind(this.pool);
     }
