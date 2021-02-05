@@ -5,7 +5,7 @@ const Utilities   = require("./Utilities.js").Utilities;
 
 //Simple Class Wrapping Product Functionality
 module.exports.Products = class Products {
-    construct(config={}) {
+    constructor(config={}) {
         this.config = config;
         this.utils  = new Utilities(config);
 
@@ -19,7 +19,7 @@ module.exports.Products = class Products {
 
         //Lots of duplicated code, need iteritive refinement to cleanup
         //build some helpers.
-        this.FetchAll = async (req) =>{
+        this.FetchAll = async (req)=>{
             var response = {"statusCode":HttpStatus.BAD_REQUEST, "error":"Parameter Validation Failed.","details":[]};
             req = this.utils.ValidateParams(req);
             if (req.validated)

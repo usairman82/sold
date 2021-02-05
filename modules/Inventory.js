@@ -5,7 +5,7 @@ const Utilities   = require("./Utilities.js").Utilities;
 
 //Simple Class Wrapping Inventory Functionality
 module.exports.Inventory = class Inventory {
-    construct(config={}) {
+    constructor(config={}) {
         this.config = config;
         this.utils  = new Utilities(config);
     }
