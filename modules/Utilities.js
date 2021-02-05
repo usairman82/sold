@@ -11,6 +11,7 @@ module.exports.Utilities = class Utilities
                                         //to support better valination in the future.
                                         this.Validate = {
                                                             "limit": async (req, key)=>{
+                                                                                    console.log(key,"===>", req[key], req);
                                                                                     if (typeof req[key]["limit"] == "undefined")
                                                                                     {
                                                                                         req[key]["limit"] = this.config.defaults["pageSize"];
@@ -26,7 +27,7 @@ module.exports.Utilities = class Utilities
                                                                                     return req;
                                                                                 },
                                                             "page": async (req,key)=>{
-
+                                                                                    console.log(key,"+++>", req[key], req);
                                                                                     if (typeof req[key]["page"] == "undefined")
                                                                                     {
                                                                                         req[key]["page"] = this.config.defaults["pageOffset"];
@@ -60,7 +61,7 @@ module.exports.Utilities = class Utilities
                                                 {
                                                     if (typeof this.Validate[key] !== "undefined")
                                                     {
-                                                        console.log(keyToValidate);
+                                                        console.log(keyToValidate,"--->",req[keyToValidate]);
                                                         req = await this.Validate[key](req,keyToValidate);
                                                         if (typeof req.validationResponse != "undefined")
                                                         {
