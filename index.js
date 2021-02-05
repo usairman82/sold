@@ -190,8 +190,7 @@ module.exports.handler = async(event)=>{
     app.use(function (req, res, next) {
       res.status(HttpStatus.NOT_IMPLEMENTED).send(JSON.stringify({"error":"Not Implemented"}));
     });
-
-    //This is new
+    //--------------------------
     app.use(function (req, res, next) {
       res.status(HttpStatus.NOT_FOUND).send(JSON.stringify({"error":"Not Found"}));
     });
