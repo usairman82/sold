@@ -54,6 +54,7 @@ module.exports.Utilities = class Utilities
                                             var keysToValidate = ["params", "query"];
                                             for(let keyToValidate of keysToValidate)
                                             {
+                                                console.log(keyToValidate, req[keyToValidate]);
                                                 for(let [key,val] of Object.entries(req[keyToValidate]))
                                                 {
                                                     if (typeof this.Validate[key] !== "undefined")
