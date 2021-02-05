@@ -111,6 +111,7 @@ async function InitializeRoutes(app) {
         res.send(await inventory.Create(req));
     });
 
+    //Should Inject Request Into a Queue
     app.put("/api/inventory/:id", jwt({
         secret: CONFIG.JWT.sillyWeakKey,
 
@@ -119,6 +120,7 @@ async function InitializeRoutes(app) {
         res.send(await inventory.Update(req));
     });
 
+    //Should Inject Request Into a Queue
     app.get("/api/inventory/:id/adjust", jwt({
         secret: CONFIG.JWT.sillyWeakKey,
 
