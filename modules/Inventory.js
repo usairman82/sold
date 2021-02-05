@@ -14,6 +14,17 @@ module.exports.Inventory = class Inventory {
         this.FetchAll = async (req)=>{
             var response = {"statusCode":HttpStatus.BAD_REQUEST, "error":"Parameter Validation Failed.","details":[]};
                 console.log(req.params, req.query, req);
+                //fix this, need to be paet of validation.
+                if (typeof req.query["page"] == "undefined")
+                {
+                    req.query["page"] = this.config.default.pageOffset;
+                }
+
+                if (typeof req.query["limit"] == "undefined")
+                {
+                    req.query["limit"] = this.config.default.pageSize;
+                }
+
                 req      = await this.utils.ValidateParams(req);
 
             if (req.validated)
