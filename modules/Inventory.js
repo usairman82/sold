@@ -1,13 +1,13 @@
 const MariaDB     = require("./MariaDB.js").MariaDB;
 const crypto      = require('crypto');
 const HttpStatus  = require("http-status-codes");
-const Utilities   = require("./modules/Utilities.js").Utilities;
+const Utilities   = require("Utilities.js").Utilities;
 
 //Simple Class Wrapping Inventory Functionality
 module.exports.Inventory = class Inventory {
     construct(config={}) {
         this.config = config;
-        this.utils  = new Utilities(config);        
+        this.utils  = new Utilities(config);
     }
 
     async Create(req) {
