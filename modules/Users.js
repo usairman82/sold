@@ -16,7 +16,7 @@ module.exports.Users = class User {
             };
 
             this.AuthenticateUser = async (credentials)=>{
-                var response = await this.db.Query('call authenticatUser',[credentials["userEmail"], await this.HashPassword(credentials["password"])]);
+                var response = await this.db.Query('call authenticateUser',[credentials["userEmail"], await this.HashPassword(credentials["password"])]);
                 if (response.errno || !response) {
                     console.error("MySQL Error", response);
                     return [{
