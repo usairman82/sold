@@ -25,7 +25,7 @@ module.exports.Utilities = class Utilities
 
                                                                                     return req;
                                                                                 },
-                                                            "page": async (req)=>{
+                                                            "page": async (req,key)=>{
                                                                                     if (typeof req[key]["page"] == "undefined")
                                                                                     {
                                                                                         req[key]["page"] = this.config.defaults["pageOffset"];
