@@ -10,6 +10,20 @@ module.exports.Utilities = class Utilities
                                         //Should turn these into an object/set of object
                                         //to support better valination in the future.
                                         this.Validate = {
+                                                            "id": async (req, key)=>{
+                                                                                        console.log(key,"===>", req[key], req);
+
+                                                                                        if (isNaN(req[key]["id"]))
+                                                                                        {
+                                                                                            req.validationResponse = {
+                                                                                                "reason":"ID Must be an integer."
+                                                                                            };
+                                                                                            req.validated = false;
+                                                                                        }
+                                                                                    }
+
+                                                                                    return req;
+                                                                                },
                                                             "limit": async (req, key)=>{
                                                                                     console.log(key,"===>", req[key], req);
                                                                                     if (typeof req[key]["limit"] == "undefined")

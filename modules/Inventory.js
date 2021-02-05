@@ -49,7 +49,7 @@ module.exports.Inventory = class Inventory {
                 delete response.error;
                 response.statusCode = HttpStatus.OK;
                 response.data       = {};
-                var response = await this.db.Query('call fetchInventory',[req.query["id"] ,req.user.data["userId"]]);
+                var response = await this.db.Query('call fetchInventory',[req.params["id"] ,req.user.data["userId"]]);
                 if (response.errno || !response) {
                     console.error("MySQL Error", response);
                     return [{
@@ -63,7 +63,7 @@ module.exports.Inventory = class Inventory {
             {
                 response.details = req.invalidParams;
             };
-        };        
+        };
     }
 
     async Create(req) {
