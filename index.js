@@ -27,49 +27,45 @@ var  CONFIG   = {};
 
 //Define Products Routes
 app.get("/api/products", async (req, res) => {
-    res.send(products.FetchAll(req));
+    res.send(await products.FetchAll(req));
 });
 
 app.get("/api/product/:id", async (req, res) => {
-    res.send(products.Fetch(req));
+    res.send(await products.Fetch(req));
 });
 
 app.post("/api/product", async (req, res) => {
-    res.send(products.Create(req));
+    res.send(await products.Create(req));
 });
 
 app.put("/api/product/:id", async (req, res) => {
-    res.send(products.Update(req));
+    res.send(await products.Update(req));
 });
 
 app.get("/api/product/search", async (req, res) => {
-    res.send(products.Search(req));
+    res.send(await products.Search(req));
 });
 
 //Inventory
 app.get("/api/inventory", async (req, res) => {
-    res.send(inventory.FetchAll(req));
+    res.send(await inventory.FetchAll(req));
 });
 
 app.get("/api/inventory/:id", async (req, res) => {
-    res.send(inventory.Fetch(req));
+    res.send(await inventory.Fetch(req));
 });
 
 app.post("/api/inventory", async (req, res) => {
-    res.send(inventory.Create(req));
+    res.send(await inventory.Create(req));
 });
 
 app.put("/api/inventory/:id", async (req, res) => {
-    res.send(inventory.Update(req));
+    res.send(await inventory.Update(req));
 });
 
 app.get("/api/inventory/:id/adjust", async (req, res) => {
-    res.send(inventory.Adjust(req));
+    res.send(await nventory.Adjust(req));
 });
-
-
-
-
 
 /*app.get("/api/:userName", (req, res) => {
     res.send(`Welcome, ${req.params.userName}`);

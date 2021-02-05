@@ -7,7 +7,7 @@ module.exports.Utilities = class Utilities
 
                                     async  FetchConfig()
                                     {
-                                        var CONFIG    = {};
+                                        var config    = {};
                                         var fail      = false;
                                         var failCount = 0;
 
@@ -20,7 +20,7 @@ module.exports.Utilities = class Utilities
 
                                                                                               try
                                                                                               {
-                                                                                                  CONFIG    = JSON.parse(tmpConfig);
+                                                                                                  config    = JSON.parse(tmpConfig);
                                                                                                   fail      = false;
                                                                                                   failCount = 0;
                                                                                               }
@@ -40,13 +40,13 @@ module.exports.Utilities = class Utilities
                                                                                         }
                                                                                   );
 
-                                        }while(fail && failCount< CONFIG.maxRetries);
+                                        }while(fail && failCount< config.maxRetries);
 
-                                        if (failCount >CONFIG.maxRetries && fail)
+                                        if (failCount >config.maxRetries && fail)
                                         {
                                             console.error("ERROR:: Unexpected Issues Loading Config File. Troubleshooting Required.");
                                         }
 
-                                        return CONFIG;
+                                        return config;
                                     }
 };
