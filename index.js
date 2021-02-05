@@ -16,7 +16,7 @@ const express     = require("express");
 var   jwt         = require('express-jwt');
 const mariabd     = require("./modules/MariaDB.js");
 const sls         = require("serverless-http");
-const app         = express();
+var   app         = express();
 const Utilities   = require("./modules/Utilities.js").Utilities;
 const Products    = require("./modules/Products.js").Products;
 const Inventory   = require("./modules/Inventory.js").Inventory;
@@ -28,7 +28,7 @@ var  CONFIG   = {};
 /*app.get("/api/:userName", (req, res) => {
     res.send(`Welcome, ${req.params.userName}`);
 })*/
-const utils   = new Utilities();
+var utils   = new Utilities();
 
 async function InitializeRoutes(app) {
 
@@ -77,6 +77,8 @@ async function InitializeRoutes(app) {
     app.get("/api/auth", async(req, res)=>{
         res.send(await utils.GenerateJWT(req));
     });
+
+    return app;
 };
 
 const jsonErrorHandler = async (err, req, res, next) => {
@@ -85,6 +87,8 @@ const jsonErrorHandler = async (err, req, res, next) => {
 
 module.exports.handler = async(event)=>{
     CONFIG = await utils.FetchConfig();
+    utils  = new Utilities(CONFIG);
+    app    = await InitializeRoutes(app);
 
     //https://expressjs.com/en/starter/faq.html
     app.use(function (err, req, res, next) {
@@ -100,7 +104,6 @@ module.exports.handler = async(event)=>{
       res.status(404).send(JSON.stringify({"error":"Not Found"}));
     });
 
-    await InitializeRoutes(app);
 
     const handler = sls(app);
     const result  = await handler(event);
