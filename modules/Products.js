@@ -50,7 +50,30 @@ module.exports.Products = class Products {
         };
 
         this.Fetch = async (req)=> {
-            return "Products.Fetch";
+            var response = {"statusCode":HttpStatus.BAD_REQUEST, "error":"Parameter Validation Failed.","details":[]};
+                console.log(req.params, req.query, req);
+                req      = await this.utils.ValidateParams(req);
+
+            if (req.validated)
+            {
+                //Refactor to dedup code
+                delete response.error;
+                response.statusCode = HttpStatus.OK;
+                response.data       = {};
+                var response = await this.db.Query('call fetchProduct',[req.query["id"], req.query["limit"],req.user.data["userId"]]);
+                if (response.errno || !response) {
+                    console.error("MySQL Error", response);
+                    return [{
+                                "error": "Database Error - " + response.Error
+                           }];
+                    }
+
+                return response[0];
+            }
+            else
+            {
+                response.details = req.invalidParams;
+            };
         };
 
         this.Search = async (req)=> {
