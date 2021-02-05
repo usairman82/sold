@@ -1,5 +1,5 @@
 //Simple Class Wrapping Inventory Functionality
-modules.export.Inventory = class Inventory {
+module.export.Inventory = class Inventory {
     construct() {
 
     }
