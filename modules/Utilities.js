@@ -1,3 +1,4 @@
+const AWS         = require("aws-sdk");
 module.exports.Utilities = class Utilities
                            {
                                     constructor(config={})

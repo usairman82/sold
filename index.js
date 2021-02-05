@@ -12,7 +12,6 @@ with an application built in PHP behind  Apache or Nginx.  However, I felt this
 would be more expedient.  Further, NodeJS, while not my favorite language, is well
 know by many junior developers and would make maintaining it easier.
 *******************************************************************************/
-const AWS         = require("aws-sdk");
 const express     = require("express");
 var   jwt         = require('express-jwt');
 const mariabd     = require("./modules/MariaDB.js");
