@@ -1,6 +1,7 @@
 const mariadb     = require("./MariaDB.js");
 const sls         = require("serverless-http");
 const crypto      = require('crypto');
+const HttpStatus  = require("http-status-codes");
 
 module.exports.Users = class Users {
 
@@ -14,8 +15,22 @@ module.exports.Users = class Users {
                     return this.hash.digest("hex");
             };
 
-            this.AuthenticatUser = async (userEmail, passwordHash)=>{
+            this.AuthenticatUser = async (credentials)=>{
+                var response = await this.db.Query('call authenticatUser',[credentials["userEmail"], await this.HashPassword(credentials["password"])]);
+                if (response.errno || !response) {
+                    console.error("MySQL Error", response);
+                    return [{
+                                "error": "Database Error - " + response.Error,
+                                "userId": "-1",
+                                "name":"",
+                                "superAdmin":"0",
+                                "shopName":"",
+                                "userAuthenticated":"0"
+                        }];
+                    };
+                }
 
+                return response;
             };
         }
 }

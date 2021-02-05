@@ -22,6 +22,7 @@ const Utilities   = require("./modules/Utilities.js").Utilities;
 const Products    = require("./modules/Products.js").Products;
 const Inventory   = require("./modules/Inventory.js").Inventory;
 const Users       = require("./modules/Users.js").Users;
+const HttpStatus  = require("http-status-codes");
 var   products    = new Products();
 var   inventory   = new Inventory();
 var   users       = {};
@@ -127,15 +128,39 @@ async function InitializeRoutes(app) {
     });
 
     app.get("/api/auth", async(req, res)=>{
-        console.log(req);
-        res.send(await utils.GenerateJWT(req));
+
+        if (typeof req.headers.authorization !== "undefined")
+        {
+            var components = Buffer.from(req.headers.authorization, "base64").toString("ascii").split(":");
+            if (components.length == 2)
+            {
+                const authResponse = await this.users.AuthenticatUser({"userEmail":components[0],"password":components[1]});
+                if (authResponse[0]["userAuthenticated"] == "1")
+                {
+                    res.send({"access_token":await utils.GenerateJWT(req)});
+                }
+                else
+                {
+                    res.status(HttpStatus.UNAUTHORIZED).send({ error: "Unauthorized." });
+                }
+            }
+            else
+            {
+                res.status(HttpStatus.UNAUTHORIZED).send({ error: "Malformed authorization header." });
+            }
+        }
+        else
+        {
+            res.status(HttpStatus.UNAUTHORIZED).send({ error: "Missing authorization header." });
+
+        }
     });
 
     return app;
 };
 
 const jsonErrorHandler = async (err, req, res, next) => {
-  res.status(500).send({ error: err });
+  res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err });
 }
 
 module.exports.handler = async(event)=>{
@@ -147,15 +172,15 @@ module.exports.handler = async(event)=>{
     //https://expressjs.com/en/starter/faq.html
     app.use(function (err, req, res, next) {
       console.error(err.stack)
-      res.status(500).send(JSON.stringify({"error":err}));
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(JSON.stringify({"error":err}));
     });
 
     app.use(function (req, res, next) {
-      res.status(501).send(JSON.stringify({"error":"Not Implemented"}));
+      res.status(HttpStatus.NOT_IMPLEMENTED).send(JSON.stringify({"error":"Not Implemented"}));
     });
 
     app.use(function (req, res, next) {
-      res.status(404).send(JSON.stringify({"error":"Not Found"}));
+      res.status(HttpStatus.NOT_FOUND).send(JSON.stringify({"error":"Not Found"}));
     });
 
 
