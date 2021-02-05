@@ -26,6 +26,7 @@ module.exports.Utilities = class Utilities
                                                                                     return req;
                                                                                 },
                                                             "page": async (req,key)=>{
+
                                                                                     if (typeof req[key]["page"] == "undefined")
                                                                                     {
                                                                                         req[key]["page"] = this.config.defaults["pageOffset"];
@@ -59,7 +60,8 @@ module.exports.Utilities = class Utilities
                                                 {
                                                     if (typeof this.Validate[key] !== "undefined")
                                                     {
-                                                        req = this.Validate[key](req,keyToValidate);
+                                                        console.log(keyToValidate);
+                                                        req = await this.Validate[key](req,keyToValidate);
                                                         if (typeof req.validationResponse != "undefined")
                                                         {
                                                             if (!req.validationResponse.validated)

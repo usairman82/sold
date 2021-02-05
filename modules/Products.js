@@ -21,7 +21,8 @@ module.exports.Products = class Products {
         //build some helpers.
         this.FetchAll = async (req)=>{
             var response = {"statusCode":HttpStatus.BAD_REQUEST, "error":"Parameter Validation Failed.","details":[]};
-                req      = this.utils.ValidateParams(req);
+                console.log(req.params, req.query, req);
+                req      = await this.utils.ValidateParams(req);
 
             if (req.validated)
             {
