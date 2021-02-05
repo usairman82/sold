@@ -1,5 +1,4 @@
 const MariaDB     = require("./MariaDB.js").MariaDB;
-const sls         = require("serverless-http");
 const crypto      = require('crypto');
 const HttpStatus  = require("http-status-codes");
 

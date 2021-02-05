@@ -1,3 +1,7 @@
+const MariaDB     = require("./MariaDB.js").MariaDB;
+const crypto      = require('crypto');
+const HttpStatus  = require("http-status-codes");
+
 //Simple Class Wrapping Inventory Functionality
 module.exports.Inventory = class Inventory {
     construct() {
