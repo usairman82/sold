@@ -1,16 +1,16 @@
 {
-    "database":{
-        "host":"sold.cmq19ymchv3e.us-east-2.rds.amazonaws.com",
-        "port":"3306",
-        "username":"admin",
-        "password":"Passw0rd2021!!",
-        "comment":"Yes, this should be in secret manager"
+    "database": {
+        "host": "sold.cmq19ymchv3e.us-east-2.rds.amazonaws.com",
+        "port": "3306",
+        "username": "admin",
+        "password": "Passw0rd2021!!",
+        "comment": "Yes, this should be in secret manager"
     },
-    "JWT":{
-        "sillyWeakKey":"_NRw$w9jjF7gRQF%yZ=6Aha_3m%S^dW6HH&VSjWMbhFTh=42CB_PhPNmDJJ+j53tF@%6guetQDTjg=AnEXUHgu%PwvFkFN58^PkCEWL4^G4t^!j=PC6usA%Z7Nk-TrV#hr?AAZBZ%nbEn7qMnRKr$&G6-G*wsRsp22=H@3Z%Hs3unRs-N7Ed$r?YCCKY=N2D-F3UJgPXe%-=d4$QT-9$#h@%8?nNJEkKh4*!Eu+b7?=3JTzUkWDvkC#RqqCx8jUwFF3aXnwdHQNy@Xxx#7Qp!!aHuXJBG9mhnKSa4-%6nzP-GXvjTmsc*%P!Dmbs5U+n*UB-cuvS5dgWNz@JtcbGepr&=UU+%gz!NknupZjcmBdS+#TYU^-9w6v*N@ZZBwZM!K9+L6ncF-g&Q&N7PZKmS3Qn&QG?d&-czfm?TfSdk$tLQyaM6YG4yHV3j#tS*N*Jz5#*&MJ?AkbVmU+VDETTrH35mvU2Yk-@2_WMrcV2hfmDtye9!fe@TgVX%k2=ZZb*_Z@Md?mT22&68UJ2zTTW-sBVDebrnq5@&=TwrvTe$3F*p&AtAUuwR539ChWqfhQrGFjNRCqrhLXG-zcYp&c*@8RL5j37sqj!u66KedWtfvRA_YZKNRDF$kGP2pdU8WdCw2Z!LPU$EQ^AL?+%jGds9%$8UxsH*a97AR?Rae5Ar!d3Fm#GfZYh2^%QN7@fRfud$uzhd%4Zu_JGW^L9$yR3?LNecgNzBqtmb?h3T_+rvL&SykTZU6sMRgQX%&#seFx7wCsr&sD$uRQ+tKUdTK!tUX92vzg^*nngZH?tx?9X2HVKaZh%WJ3vZ3Xx!$8Bk7yU8X!2kqFp+cRE_MMgpAf6pCW%FXH4EDV*TksPPER-DvsbKzrg_#V*A+6?N6+$yK6cpsXCCrU#NFMYNBA8YaWwmBMXV4uQt5HWSSCusA4_tDUJ-rLk#-S+@_@Qz&UuP9BLL6BE*sQ_+G6!nyT%ndTCj2?3wwy6pVDWHjQWdpFJ=FfHprNXmeBbCH#karLpKnxVgpj7tEjmEKZ+*MsP7@6N_McXVT^Wch97vBGU%9kDSqJb7=*D9A7Pp&An8$ScVR8?6#kpDF_vT9vV_s-*TPbvN&T-4N$rC6zHzmHJGHjJmXszwfe^JPRtpfv-&XjqgcZQj5tEv6FCR&mrBV&p$z5vCUuQ3$LfaA#ufHH7xCHgFCSn!FyrJ_CAwE9%5#Rsu56S#Cmbyj-7H#c-$jzyu?-5y3N?S46F-M%2&sh9@aRXTr83-=dXAXMgstrWG6z!v=Er9y?JLbWQZ#^hQ9r-S$R&?+pFQ!j=Y-j!aAfaXvRYDXZQ##QdGgGTEKPxf7pzfC4-*X79_EvdTykP2zQ@Ww^Bjpv7pqnAE?GqbuVVVDbvfsZfG96bnn=*-3x?5=snkbqEHUmGHRQ$x!mt@AmXYQF79!Jp^a2P5W%RnexP-3q?nYn_zkRut2wjf2zUXQwWWf+V-E#njAcs^kShPH^9w8&D^#-zEqjp%4$8C#M99HJj8NKfP!xzmZ_e@zfn^+c%eTZuz$p^UQz=&4=rfargpD&^V4QvXHuHVnXMqL+ux@L4ajS&e^BHLZ*cLc$9LZ$f#4BVY2ELBfB2$HKH_cDWy&PwQ@#kJLpN#r7e_qsHXRs&jA?HUgE539kUbJBB#@pLLUtwp44tBg7LkqZ&Rvg^YG4#qnDa*#63y-Dgq4VnvXSHYfsDYPfdD_JZ=g32?j2*RcyS&&^7wxAEQUAN6!47%Y_^3&=#S%LTa52kS@JC4qfMH@xAt2TZy$QNq@Us-+vzH2$sfK!t+48b=_Sbj^pEmxV@$TM#ksYANcfu7t_xg?cCvQAYN@67hJaQ7S_8AT-U_LPu#mGUt@Tvpd_tK%h6kdaT#zE+_$X&5WZ@8?vZtv-X3@=aXjZ#4s#ZrXP?$dSpb-ABqh_XW_$FHeWD7ncWLPc&V!WQzE@LT?UQ5s2upP?m^S7+U&MJQHpxyWy8L&Par52vxUcyKBrKNww_a#8XJ85H$JD=*qE6tcX&cHumK9X2dW?ShYkQbZfh?gbduZZV5$qP",
-        "comment":"Yes, this should be an asymmetric keypair and stored in a secret manager"
+    "JWT": {
+        "sillyWeakKey": "_NRw$w9jjF7gRQF%yZ=6Aha_3m%S^dW6HH&VSjWMbhFTh=42CB_PhPNmDJJ+j53tF@%6guetQDTjg=AnEXUHgu%PwvFkFN58^PkCEWL4^G4t^!j=PC6usA%Z7Nk-TrV#hr?AAZBZ%nbEn7qMnRKr$&G6-G*wsRsp22=H@3Z%Hs3unRs-N7Ed$r?YCCKY=N2D-F3UJgPXe%-=d4$QT-9$#h@%8?nNJEkKh4*!Eu+b7?=3JTzUkWDvkC#RqqCx8jUwFF3aXnwdHQNy@Xxx#7Qp!!aHuXJBG9mhnKSa4-%6nzP-GXvjTmsc*%P!Dmbs5U+n*UB-cuvS5dgWNz@JtcbGepr&=UU+%gz!NknupZjcmBdS+#TYU^-9w6v*N@ZZBwZM!K9+L6ncF-g&Q&N7PZKmS3Qn&QG?d&-czfm?TfSdk$tLQyaM6YG4yHV3j#tS*N*Jz5#*&MJ?AkbVmU+VDETTrH35mvU2Yk-@2_WMrcV2hfmDtye9!fe@TgVX%k2=ZZb*_Z@Md?mT22&68UJ2zTTW-sBVDebrnq5@&=TwrvTe$3F*p&AtAUuwR539ChWqfhQrGFjNRCqrhLXG-zcYp&c*@8RL5j37sqj!u66KedWtfvRA_YZKNRDF$kGP2pdU8WdCw2Z!LPU$EQ^AL?+%jGds9%$8UxsH*a97AR?Rae5Ar!d3Fm#GfZYh2^%QN7@fRfud$uzhd%4Zu_JGW^L9$yR3?LNecgNzBqtmb?h3T_+rvL&SykTZU6sMRgQX%&#seFx7wCsr&sD$uRQ+tKUdTK!tUX92vzg^*nngZH?tx?9X2HVKaZh%WJ3vZ3Xx!$8Bk7yU8X!2kqFp+cRE_MMgpAf6pCW%FXH4EDV*TksPPER-DvsbKzrg_#V*A+6?N6+$yK6cpsXCCrU#NFMYNBA8YaWwmBMXV4uQt5HWSSCusA4_tDUJ-rLk#-S+@_@Qz&UuP9BLL6BE*sQ_+G6!nyT%ndTCj2?3wwy6pVDWHjQWdpFJ=FfHprNXmeBbCH#karLpKnxVgpj7tEjmEKZ+*MsP7@6N_McXVT^Wch97vBGU%9kDSqJb7=*D9A7Pp&An8$ScVR8?6#kpDF_vT9vV_s-*TPbvN&T-4N$rC6zHzmHJGHjJmXszwfe^JPRtpfv-&XjqgcZQj5tEv6FCR&mrBV&p$z5vCUuQ3$LfaA#ufHH7xCHgFCSn!FyrJ_CAwE9%5#Rsu56S#Cmbyj-7H#c-$jzyu?-5y3N?S46F-M%2&sh9@aRXTr83-=dXAXMgstrWG6z!v=Er9y?JLbWQZ#^hQ9r-S$R&?+pFQ!j=Y-j!aAfaXvRYDXZQ##QdGgGTEKPxf7pzfC4-*X79_EvdTykP2zQ@Ww^Bjpv7pqnAE?GqbuVVVDbvfsZfG96bnn=*-3x?5=snkbqEHUmGHRQ$x!mt@AmXYQF79!Jp^a2P5W%RnexP-3q?nYn_zkRut2wjf2zUXQwWWf+V-E#njAcs^kShPH^9w8&D^#-zEqjp%4$8C#M99HJj8NKfP!xzmZ_e@zfn^+c%eTZuz$p^UQz=&4=rfargpD&^V4QvXHuHVnXMqL+ux@L4ajS&e^BHLZ*cLc$9LZ$f#4BVY2ELBfB2$HKH_cDWy&PwQ@#kJLpN#r7e_qsHXRs&jA?HUgE539kUbJBB#@pLLUtwp44tBg7LkqZ&Rvg^YG4#qnDa*#63y-Dgq4VnvXSHYfsDYPfdD_JZ=g32?j2*RcyS&&^7wxAEQUAN6!47%Y_^3&=#S%LTa52kS@JC4qfMH@xAt2TZy$QNq@Us-+vzH2$sfK!t+48b=_Sbj^pEmxV@$TM#ksYANcfu7t_xg?cCvQAYN@67hJaQ7S_8AT-U_LPu#mGUt@Tvpd_tK%h6kdaT#zE+_$X&5WZ@8?vZtv-X3@=aXjZ#4s#ZrXP?$dSpb-ABqh_XW_$FHeWD7ncWLPc&V!WQzE@LT?UQ5s2upP?m^S7+U&MJQHpxyWy8L&Par52vxUcyKBrKNww_a#8XJ85H$JD=*qE6tcX&cHumK9X2dW?ShYkQbZfh?gbduZZV5$qP",
+        "comment": "Yes, this should be an asymmetric keypair and stored in a secret manager"
     },
-    "defaults":{
-        "pageSize":25
+    "defaults": {
+        "pageSize": 25
     }
 }
