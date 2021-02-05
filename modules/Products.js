@@ -21,15 +21,15 @@ module.exports.Products = class Products {
         //build some helpers.
         this.FetchAll = async (req)=>{
             var response = {"statusCode":HttpStatus.BAD_REQUEST, "error":"Parameter Validation Failed.","details":[]};
-            console.log(req.params, typeof req.params);
-            req = this.utils.ValidateParams(req);
+                req      = this.utils.ValidateParams(req);
+
             if (req.validated)
             {
                 //Refactor to dedup code
                 delete response.error;
                 response.statusCode = HttpStatus.OK;
                 response.data       = {};
-                var response = await this.db.Query('call fetchPagedProducts',[req.params["page"]*req.params["limit"], req.params["limit"],req.user["userId"]]);
+                var response = await this.db.Query('call fetchPagedProducts',[req.query["page"]*req.query["limit"], req.query["limit"],req.user.data.["userId"]]);
                 if (response.errno || !response) {
                     console.error("MySQL Error", response);
                     return [{

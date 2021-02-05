@@ -10,31 +10,31 @@ module.exports.Utilities = class Utilities
                                         //Should turn these into an object/set of object
                                         //to support better valination in the future.
                                         this.Validate = {
-                                                            "limit": async (req)=>{
-                                                                                    if (typeof req.params["limit"] == "undefined")
+                                                            "limit": async (req, key)=>{
+                                                                                    if (typeof req["key"]["limit"] == "undefined")
                                                                                     {
-                                                                                        req.params["limit"] = this.config.defaults["pageSize"];
+                                                                                        req["key"]["limit"] = this.config.defaults["pageSize"];
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        if (isNaN(req.params["limit"]))
+                                                                                        if (isNaN(req["key"]["limit"]))
                                                                                         {
-                                                                                            req.params["limt"] = this.config.defaults["pageSize"];
+                                                                                            req["key"]["limt"] = this.config.defaults["pageSize"];
                                                                                         }
                                                                                     }
 
                                                                                     return req;
                                                                                 },
                                                             "page": async (req)=>{
-                                                                                    if (typeof req.params["page"] == "undefined")
+                                                                                    if (typeof req["key"]["page"] == "undefined")
                                                                                     {
-                                                                                        req.params["page"] = this.config.defaults["pageOffset"];
+                                                                                        req["key"]["page"] = this.config.defaults["pageOffset"];
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        if (isNaN(req.params["page"]))
+                                                                                        if (isNaN(req["key"]["page"]))
                                                                                         {
-                                                                                            req.params["page"] = this.config.defaults["pageOffset"];
+                                                                                            req["key"]["page"] = this.config.defaults["pageOffset"];
                                                                                         }
                                                                                     }
 
@@ -49,21 +49,25 @@ module.exports.Utilities = class Utilities
                                         //should make it trivial to support new methods of validation.
                                         this.ValidateParams = async (req)=>{
 
-                                            req.validated     = true;
-                                            var invalidParams = [];
-                                            for(let [key,val] of req.params)
+                                            req.validated      = true;
+                                            var invalidParams  = [];
+                                            var keysToValidate = ["params", "query"];
+                                            for(let keyToValidate of keysToValidate)
                                             {
-                                                if (typeof this.Validate[key] !== "undefined")
+                                                for(let [key,val] of Object.entries(req[keyToValidate]))
                                                 {
-                                                    req = this.Validate[key](req);
-                                                    if (typeof req.validationResponse != "undefined")
+                                                    if (typeof this.Validate[key] !== "undefined")
                                                     {
-                                                        if (!req.validationResponse.validated)
+                                                        req = this.Validate[key](req,keyToValidate);
+                                                        if (typeof req.validationResponse != "undefined")
                                                         {
-                                                            invalidParams.push({"params":key,"reason":req.validationResponse.reason});
-                                                        }
+                                                            if (!req.validationResponse.validated)
+                                                            {
+                                                                invalidParams.push({"params":key,"reason":req.validationResponse.reason});
+                                                            }
 
-                                                        req = req.req;
+                                                            req = req.req;
+                                                        }
                                                     }
                                                 }
                                             }
