@@ -18,8 +18,32 @@ module.exports.Products = class Products {
         return "Products.Update";
     }
 
+    //Lots of duplicated code, need iteritive refinement to cleanup
+    //build some helpers.
     async FetchAll(req) {
-        return "Products.Fetch";
+        var response = {"statusCode":HttpStatus.BAD_REQUEST, "error":"Parameter Validation Failed.","details":[]};
+        req = this.utils.ValidateParams(req);
+        if (req.validated)
+        {
+            //Refactor to dedup code
+            console.log(req);
+            delete response.error;
+            response.statusCode = HttpStatus.OK;
+            response.data       = {};
+            var response = await this.db.Query('call fetchPagedProducts',[req.params["page"]*req.params["limit"], req.params["limit"],req.user["userId"]]);
+            if (response.errno || !response) {
+                console.error("MySQL Error", response);
+                return [{
+                            "error": "Database Error - " + response.Error
+                       }];
+                }
+
+            return response[0];
+        }
+        else
+        {
+            response.details = req.invalidParams;
+        }
     }
 
     async Fetch(req) {
