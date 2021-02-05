@@ -11,30 +11,30 @@ module.exports.Utilities = class Utilities
                                         //to support better valination in the future.
                                         this.Validate = {
                                                             "limit": async (req, key)=>{
-                                                                                    if (typeof req["key"]["limit"] == "undefined")
+                                                                                    if (typeof req[key]["limit"] == "undefined")
                                                                                     {
-                                                                                        req["key"]["limit"] = this.config.defaults["pageSize"];
+                                                                                        req[key]["limit"] = this.config.defaults["pageSize"];
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        if (isNaN(req["key"]["limit"]))
+                                                                                        if (isNaN(req[key]["limit"]))
                                                                                         {
-                                                                                            req["key"]["limt"] = this.config.defaults["pageSize"];
+                                                                                            req[key]["limt"] = this.config.defaults["pageSize"];
                                                                                         }
                                                                                     }
 
                                                                                     return req;
                                                                                 },
                                                             "page": async (req)=>{
-                                                                                    if (typeof req["key"]["page"] == "undefined")
+                                                                                    if (typeof req[key]["page"] == "undefined")
                                                                                     {
-                                                                                        req["key"]["page"] = this.config.defaults["pageOffset"];
+                                                                                        req[key]["page"] = this.config.defaults["pageOffset"];
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        if (isNaN(req["key"]["page"]))
+                                                                                        if (isNaN(req[key]["page"]))
                                                                                         {
-                                                                                            req["key"]["page"] = this.config.defaults["pageOffset"];
+                                                                                            req[key]["page"] = this.config.defaults["pageOffset"];
                                                                                         }
                                                                                     }
 
