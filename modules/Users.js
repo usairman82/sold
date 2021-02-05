@@ -3,9 +3,9 @@ const sls         = require("serverless-http");
 const crypto      = require('crypto');
 const HttpStatus  = require("http-status-codes");
 
-module.exports.Users = class Users {
+module.exports.Users = class User {
 
-        construct(config={})
+        constructor(config={})
         {
             this.db   = new mariadb(config);
             this.hash = crypto.createHash('sha512');

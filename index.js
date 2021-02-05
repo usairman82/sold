@@ -133,11 +133,9 @@ async function InitializeRoutes(app) {
         {
             var components = req.headers.authorization.split(" ");
 
-            console.log(components, req.headers.authorization);
             if (components.length ==2 && components[0].toLowerCase() == "basic")
             {
                 components = Buffer.from(components[1], "base64").toString("ascii").split(":");
-                console.log(components, req.headers);
                 if (components.length == 2)
                 {
                     const authResponse = await users.AuthenticateUser({"userEmail":components[0],"password":components[1]});
