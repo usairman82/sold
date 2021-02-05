@@ -13,6 +13,7 @@ would be more expedient.  Further, NodeJS, while not my favorite language, is we
 know by many junior developers and would make maintaining it easier.
 *******************************************************************************/
 const express = require("express");
+var   jwt     = require('express-jwt');
 const mariabd = require("./modules/MariaDB.js");
 const sls     = require("serverless-http");
 const app     = express();
@@ -30,8 +31,8 @@ app.post("/api/product", (req, res) => {
     res.send("POST /api/products/");
 });
 
-app.put("/api/product", (req, res) => {
-    res.send("PUT /api/products/");
+app.put("/api/product/:id", (req, res) => {
+    res.send("PUT /api/product/");
 });
 
 app.get("/api/product/search", (req, res) => {
