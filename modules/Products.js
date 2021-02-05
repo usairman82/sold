@@ -28,12 +28,12 @@ module.exports.Products = class Products {
                 //fix this, need to be paet of validation.
                 if (typeof req.query["page"] == "undefined")
                 {
-                    req.query["page"] = this.config.default.pageOffset;
+                    req.query["page"] = this.config.defaults.pageOffset;
                 }
 
                 if (typeof req.query["limit"] == "undefined")
                 {
-                    req.query["limit"] = this.config.default.pageSize;
+                    req.query["limit"] = this.config.defaults.pageSize;
                 }
 
                 req      = await this.utils.ValidateParams(req);
