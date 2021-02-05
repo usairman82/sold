@@ -1,7 +1,7 @@
 const MariaDB     = require("./MariaDB.js").MariaDB;
 const crypto      = require('crypto');
 const HttpStatus  = require("http-status-codes");
-const Utilities   = require("Utilities.js").Utilities;
+const Utilities   = require("./Utilities.js").Utilities;
 
 //Simple Class Wrapping Product Functionality
 module.exports.Products = class Products {
