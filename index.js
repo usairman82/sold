@@ -19,50 +19,52 @@ const mariabd     = require("./modules/MariaDB.js");
 const sls         = require("serverless-http");
 const app         = express();
 const Utilities   = require("./modules/Utilities.js").Utilities;
-
-//Config
+const Product     = require("./modules/Products.js").Products;
+const Inventory   = require("./modules/Inventory.js").Inventory;
+var   products    = new Products();
+var   inventory   = new Inventory();
+//Config Global
 var  CONFIG   = {};
 
-
-//Products
-app.get("/api/products", (req, res) => {
+//Define Products Routes
+app.get("/api/products", async (req, res) => {
     res.send("/api/products");
 });
 
-app.get("/api/product/:id", (req, res) => {
+app.get("/api/product/:id", async (req, res) => {
     res.send("/api/products/"+req.params.id);
 });
 
-app.post("/api/product", (req, res) => {
+app.post("/api/product", async (req, res) => {
     res.send("POST /api/products/");
 });
 
-app.put("/api/product/:id", (req, res) => {
+app.put("/api/product/:id", async (req, res) => {
     res.send("PUT /api/product/");
 });
 
-app.get("/api/product/search", (req, res) => {
+app.get("/api/product/search", async (req, res) => {
     res.send("/api/products/search");
 });
 
 //Inventory
-app.get("/api/inventory", (req, res) => {
+app.get("/api/inventory", async (req, res) => {
     res.send("/api/products");
 });
 
-app.get("/api/inventory/:id", (req, res) => {
+app.get("/api/inventory/:id", async (req, res) => {
     res.send("/api/inventory/"+req.params.id);
 });
 
-app.post("/api/inventory", (req, res) => {
+app.post("/api/inventory", async (req, res) => {
     res.send("POST /api/inventory/");
 });
 
-app.put("/api/inventory/:id", (req, res) => {
+app.put("/api/inventory/:id", async (req, res) => {
     res.send("PUT /api/inventory/"+req.params.id);
 });
 
-app.get("/api/inventory/:id/adjust", (req, res) => {
+app.get("/api/inventory/:id/adjust", async (req, res) => {
     res.send("/api/inventory/adjust:"+req.params.id);
 });
 

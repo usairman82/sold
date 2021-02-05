@@ -1,9 +1,9 @@
 {
     "database":{
         "host":"",
-        "port":"",
-        "username":"",
-        "password":"",
+        "port":"3306",
+        "username":"admin",
+        "password":"Passw0rd2021!!",
         "comment":"Yes, this should be in secret manager"
     },
     "defaults":{
