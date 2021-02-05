@@ -23,25 +23,12 @@ const Products    = require("./modules/Products.js").Products;
 const Inventory   = require("./modules/Inventory.js").Inventory;
 const Users       = require("./modules/Users.js").Users;
 const HttpStatus  = require("http-status-codes");
-var   products    = new Products();
-var   inventory   = new Inventory();
+var   products    = {};
+var   inventory   = {};
 var   users       = {};
 //Config Global
-var  CONFIG   = {};
-
-var isRevokedCallback = function(req, payload, done){
-  var issuer = payload.iss;
-  var tokenId = payload.jti;
-
-  data.getRevokedToken(issuer, tokenId, function(err, token){
-    if (err) { return done(err); }
-    return done(null, !!token);
-  });
-};
-/*app.get("/api/:userName", (req, res) => {
-    res.send(`Welcome, ${req.params.userName}`);
-})*/
-var utils   = new Utilities();
+var   CONFIG      = {};
+var utils         = new Utilities();
 
 async function InitializeRoutes(app) {
 
@@ -176,10 +163,12 @@ const jsonErrorHandler = async (err, req, res, next) => {
 }
 
 module.exports.handler = async(event)=>{
-    CONFIG = await utils.FetchConfig();
-    utils  = new Utilities(CONFIG);
-    users  = new Users(CONFIG);
-    app    = await InitializeRoutes(app);
+    CONFIG      = await utils.FetchConfig();
+    utils       = new Utilities(CONFIG);
+    users       = new Users(CONFIG);
+    products    = new Products();
+    inventory   = new Inventory();
+    app         = await InitializeRoutes(app);
 
     //https://expressjs.com/en/starter/faq.html
     app.use(function (err, req, res, next) {

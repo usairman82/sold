@@ -12,6 +12,7 @@
         "comment": "Yes, this should be an asymmetric keypair and stored in a secret manager"
     },
     "defaults": {
+        "pageOffset": 0,
         "pageSize": 25
     }
 }

@@ -1,30 +1,32 @@
 const MariaDB     = require("./MariaDB.js").MariaDB;
 const crypto      = require('crypto');
 const HttpStatus  = require("http-status-codes");
+const Utilities   = require("./modules/Utilities.js").Utilities;
 
 //Simple Class Wrapping Inventory Functionality
 module.exports.Inventory = class Inventory {
-    construct() {
-
+    construct(config={}) {
+        this.config = config;
+        this.utils  = new Utilities(config);        
     }
 
-    async Create(req){
+    async Create(req) {
         return "Inventory.Create";
     }
 
-    async Update(req){
+    async Update(req) {
         return "Inventory.Update";
     }
 
-    async FetchAll(req){
+    async FetchAll(req) {
         return "Inventory.FetchAll";
     }
 
-    async Fetch(req){
+    async Fetch(req) {
         return "Inventory.Fetch";
     }
 
-    async Adjust(req){
+    async Adjust(req) {
         return "Inventory.Adjust";
     }
 };
