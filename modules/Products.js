@@ -8,6 +8,8 @@ module.exports.Products = class Products {
     constructor(config={}) {
         this.config = config;
         this.utils  = new Utilities(config);
+        this.db     = new MariaDB(config);
+
 
         this.Create = async (req)=> {
             return "Products.Create";
