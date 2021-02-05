@@ -25,6 +25,15 @@ var   inventory   = new Inventory();
 //Config Global
 var  CONFIG   = {};
 
+var isRevokedCallback = function(req, payload, done){
+  var issuer = payload.iss;
+  var tokenId = payload.jti;
+
+  data.getRevokedToken(issuer, tokenId, function(err, token){
+    if (err) { return done(err); }
+    return done(null, !!token);
+  });
+};
 /*app.get("/api/:userName", (req, res) => {
     res.send(`Welcome, ${req.params.userName}`);
 })*/
@@ -33,44 +42,84 @@ var utils   = new Utilities();
 async function InitializeRoutes(app) {
 
     //Define Products Routes
-    app.get("/api/products", async (req, res) => {
+    app.get("/api/products", jwt({
+        secret: CONFIG.JWT.sillyWeakKey,
+
+        algorithms: ['HS256']
+      }),async (req, res) => {
         res.send(await products.FetchAll(req));
     });
 
-    app.get("/api/product/:id", async (req, res) => {
+    app.get("/api/product/:id", jwt({
+        secret: CONFIG.JWT.sillyWeakKey,
+
+        algorithms: ['HS256']
+    }),async (req, res) => {
         res.send(await products.Fetch(req));
     });
 
-    app.post("/api/product", async (req, res) => {
+    app.post("/api/product", jwt({
+        secret: CONFIG.JWT.sillyWeakKey,
+
+        algorithms: ['HS256']
+    }), async (req, res) => {
         res.send(await products.Create(req));
     });
 
-    app.put("/api/product/:id", async (req, res) => {
+    app.put("/api/product/:id", jwt({
+        secret: CONFIG.JWT.sillyWeakKey,
+
+        algorithms: ['HS256']
+    }), async (req, res) => {
         res.send(await products.Update(req));
     });
 
-    app.get("/api/product/search", async (req, res) => {
+    app.get("/api/product/search", jwt({
+        secret: CONFIG.JWT.sillyWeakKey,
+
+        algorithms: ['HS256']
+    }), async (req, res) => {
         res.send(await products.Search(req));
     });
 
     //Inventory
-    app.get("/api/inventory", async (req, res) => {
+    app.get("/api/inventory", jwt({
+        secret: CONFIG.JWT.sillyWeakKey,
+
+        algorithms: ['HS256']
+    }), async (req, res) => {
         res.send(await inventory.FetchAll(req));
     });
 
-    app.get("/api/inventory/:id", async (req, res) => {
+    app.get("/api/inventory/:id", jwt({
+        secret: CONFIG.JWT.sillyWeakKey,
+
+        algorithms: ['HS256']
+    }), async (req, res) => {
         res.send(await inventory.Fetch(req));
     });
 
-    app.post("/api/inventory", async (req, res) => {
+    app.post("/api/inventory", jwt({
+        secret: CONFIG.JWT.sillyWeakKey,
+
+        algorithms: ['HS256']
+    }), async (req, res) => {
         res.send(await inventory.Create(req));
     });
 
-    app.put("/api/inventory/:id", async (req, res) => {
+    app.put("/api/inventory/:id", jwt({
+        secret: CONFIG.JWT.sillyWeakKey,
+
+        algorithms: ['HS256']
+    }), async (req, res) => {
         res.send(await inventory.Update(req));
     });
 
-    app.get("/api/inventory/:id/adjust", async (req, res) => {
+    app.get("/api/inventory/:id/adjust", jwt({
+        secret: CONFIG.JWT.sillyWeakKey,
+
+        algorithms: ['HS256']
+    }), async (req, res) => {
         res.send(await inventory.Adjust(req));
     });
 
