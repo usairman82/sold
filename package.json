@@ -1,0 +1,28 @@
+{
+  "name": "sold",
+  "version": "1.0.0",
+  "description": "sold",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usairman82/sold.git"
+  },
+  "keywords": [
+    "sold",
+    "api",
+    "test"
+  ],
+  "author": "me",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/usairman82/sold/issues"
+  },
+  "homepage": "https://github.com/usairman82/sold#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "serverless-http": "^2.7.0"
+  }
+}
